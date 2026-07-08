@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1400px; height: 800px; overflow: hidden; background: #fff;
+       font-family: 'Inter', -apple-system, sans-serif; color: #111827; }
+:root {
+  --blue:   #2563EB;
+  --lblue:  #93C5FD;
+  --orange: #F59E0B;
+  --green:  #10B981;
+  --red:    #EF4444;
+  --gray:   #6B7280;
+  --dark:   #111827;
+  --grid:   #F3F4F6;
+  --bg:     #F9FAFB;
+  --border: #E5E7EB;
+}
+.slide { width: 1400px; height: 800px; padding: 52px 64px 44px;
+         display: flex; flex-direction: column; }
+.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .07em;
+           text-transform: uppercase; color: var(--lblue); margin-bottom: 8px; }
+.title   { font-size: 28px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+.subtitle{ font-size: 14px; color: var(--gray); margin-top: 6px; }
+.header  { margin-bottom: 32px; }
+.body    { flex: 1; display: flex; gap: 20px; }
+.footer  { margin-top: auto; padding-top: 14px; display: flex;
+           justify-content: space-between; font-size: 10px; color: #D1D5DB; }
+.card    { background: var(--bg); border-radius: 16px; padding: 24px;
+           border: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header">
+    <div class="eyebrow">SECTION · context</div>
+    <div class="title">Slide Title</div>
+    <div class="subtitle">One supporting line</div>
+  </div>
+  <div class="body">
+    <!-- Add your content here -->
+  </div>
+  <div class="footer">
+    <div>Source: ...</div>
+    <div>Context · date</div>
+  </div>
+</div>
+</body>
+</html>

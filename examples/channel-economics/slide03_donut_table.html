@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1400px; height: 800px; overflow: hidden; background: #fff; font-family: 'Inter', -apple-system, sans-serif; color: #111827; }
+.slide { width: 1400px; height: 800px; padding: 52px 64px 44px; display: flex; flex-direction: column; }
+.header { margin-bottom: 36px; }
+.slide-num { font-size: 13px; font-weight: 700; letter-spacing: .08em; color: #93C5FD; text-transform: uppercase; margin-bottom: 8px; }
+.title { font-size: 28px; font-weight: 800; color: #111827; line-height: 1.2; letter-spacing: -.02em; }
+.subtitle { font-size: 14px; color: #6B7280; margin-top: 6px; }
+.body-row { display: flex; gap: 40px; flex: 1; }
+
+/* Left: donut */
+.donut-panel { width: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.donut-wrap { position: relative; width: 280px; height: 280px; }
+.donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+.donut-big { font-size: 36px; font-weight: 900; color: #111827; }
+.donut-sub { font-size: 13px; color: #6B7280; font-weight: 500; margin-top: 2px; }
+
+.legend-items { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.leg-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F9FAFB; border-radius: 10px; }
+.leg-color { width: 12px; height: 12px; border-radius: 4px; flex-shrink: 0; }
+.leg-text { font-size: 12px; color: #374151; font-weight: 500; flex: 1; }
+.leg-num { font-size: 15px; font-weight: 800; }
+
+/* Right: comparison table */
+.table-panel { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.table-title { font-size: 14px; font-weight: 700; color: #374151; margin-bottom: 16px; }
+.table { width: 100%; border-collapse: collapse; }
+.table th {
+  font-size: 11px; font-weight: 700; color: #9CA3AF;
+  text-transform: uppercase; letter-spacing: .06em;
+  text-align: right; padding: 0 16px 14px;
+  border-bottom: 2px solid #E5E7EB;
+}
+.table th:first-child { text-align: left; }
+.table td {
+  padding: 13px 16px; text-align: right;
+  font-size: 14px; font-weight: 500; color: #374151;
+  border-bottom: 1px solid #F3F4F6;
+}
+.table td:first-child { text-align: left; font-weight: 600; color: #111827; }
+.table tr.highlight td { background: #EFF6FF; }
+.table tr.highlight td:first-child { border-radius: 8px 0 0 8px; }
+.table tr.highlight td:last-child { border-radius: 0 8px 8px 0; }
+.val-blue { color: #2563EB !important; font-weight: 800 !important; }
+.val-orange { color: #D97706 !important; font-weight: 800 !important; }
+.val-gray { color: #9CA3AF !important; }
+.th-blue { color: #2563EB !important; }
+.th-orange { color: #D97706 !important; }
+
+.note { margin-top: 16px; font-size: 11px; color: #9CA3AF; line-height: 1.5; padding: 12px 16px; background: #FEF3C7; border-radius: 8px; }
+.note strong { color: #92400E; }
+
+.footer { display: flex; justify-content: space-between; margin-top: 20px; font-size: 10px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header">
+    <div class="slide-num">Реатрибуция · 8 июн — 7 июл 2026</div>
+    <div class="title">Из чего состоят 717 установок</div>
+    <div class="subtitle">Неатрибутированные минус ASA downloads = недосчитанная Meta (ATT/privacy — норма для iOS)</div>
+  </div>
+
+  <div class="body-row">
+
+    <div class="donut-panel">
+      <div class="donut-wrap">
+        <canvas id="donut"></canvas>
+        <div class="donut-center">
+          <div class="donut-big">717</div>
+          <div class="donut-sub">установок</div>
+        </div>
+      </div>
+      <div class="legend-items">
+        <div class="leg-row">
+          <div class="leg-color" style="background:#2563EB"></div>
+          <div class="leg-text">Meta атрибутировано</div>
+          <div class="leg-num" style="color:#2563EB">236</div>
+        </div>
+        <div class="leg-row">
+          <div class="leg-color" style="background:#93C5FD"></div>
+          <div class="leg-text">Meta неатрибутировано</div>
+          <div class="leg-num" style="color:#3B82F6">171</div>
+        </div>
+        <div class="leg-row">
+          <div class="leg-color" style="background:#F59E0B"></div>
+          <div class="leg-text">ASA downloads</div>
+          <div class="leg-num" style="color:#D97706">310</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-panel">
+      <div class="table-title">Сравнение метрик: Airbridge vs реатрибуция</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Метрика</th>
+            <th class="val-gray">Airbridge<br>(неполная)</th>
+            <th class="th-blue">Meta реальная</th>
+            <th class="th-orange">ASA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Установки</td>
+            <td class="val-gray">236</td>
+            <td class="val-blue">407</td>
+            <td class="val-orange">310</td>
+          </tr>
+          <tr>
+            <td>Spend</td>
+            <td class="val-gray">$11,903</td>
+            <td class="val-blue">$11,903</td>
+            <td class="val-orange">$3,775</td>
+          </tr>
+          <tr class="highlight">
+            <td>CPI</td>
+            <td class="val-gray">$50</td>
+            <td class="val-blue">$29</td>
+            <td class="val-orange">$12</td>
+          </tr>
+          <tr>
+            <td>Signups</td>
+            <td class="val-gray">165</td>
+            <td class="val-blue">~289</td>
+            <td class="val-orange">~98</td>
+          </tr>
+          <tr>
+            <td>Signup CR</td>
+            <td class="val-gray">70%</td>
+            <td class="val-blue">70%</td>
+            <td class="val-orange">~32%</td>
+          </tr>
+          <tr class="highlight">
+            <td>Cost per Signup</td>
+            <td class="val-gray">$72</td>
+            <td class="val-blue">$41</td>
+            <td class="val-orange">~$38</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        <strong>Оценка ASA CR (~32%)</strong> — при допущении Meta CR 70% на неатрибутированной части.
+        Атрибуция ASA в Airbridge не настроена — реальные signups/subs по источнику неизвестны.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div>Источники: Meta Ads API · Airbridge · отчёт агентства ASA · HEX/PostHog</div>
+    <div>MyTruv iOS · ASA/Meta audit · 8 июля 2026</div>
+  </div>
+</div>
+
+<script>
+const ctx = document.getElementById('donut').getContext('2d');
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    datasets: [{
+      data: [236, 171, 310],
+      backgroundColor: ['#2563EB', '#93C5FD', '#F59E0B'],
+      borderWidth: 4,
+      borderColor: '#fff',
+      hoverOffset: 0,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    cutout: '62%',
+    plugins: { legend: { display: false }, tooltip: { enabled: false } },
+    animation: false,
+  }
+});
+</script>
+</body>
+</html>

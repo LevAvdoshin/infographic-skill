@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1400px; height: 800px; overflow: hidden;
+  background: #fff;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #111827;
+}
+
+.slide {
+  width: 1400px; height: 800px;
+  padding: 52px 64px 44px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.header { margin-bottom: 40px; }
+.slide-num {
+  font-size: 13px; font-weight: 700; letter-spacing: .08em;
+  color: #93C5FD; text-transform: uppercase; margin-bottom: 8px;
+}
+.title {
+  font-size: 28px; font-weight: 800; color: #111827;
+  line-height: 1.2; letter-spacing: -.02em;
+}
+.subtitle {
+  font-size: 14px; font-weight: 400; color: #6B7280;
+  margin-top: 6px; letter-spacing: -.01em;
+}
+
+/* CARDS ROW */
+.cards {
+  display: flex; gap: 20px; flex: 1; align-items: stretch;
+}
+.card {
+  flex: 1;
+  background: #F9FAFB;
+  border-radius: 16px;
+  padding: 28px 24px 24px;
+  display: flex; flex-direction: column;
+  border: 1px solid #F3F4F6;
+  position: relative;
+}
+.card-label {
+  font-size: 12px; font-weight: 600; color: #9CA3AF;
+  text-transform: uppercase; letter-spacing: .06em;
+  margin-bottom: 20px;
+}
+
+/* Bar pair */
+.bar-pair {
+  display: flex; gap: 14px; align-items: flex-end;
+  flex: 1; padding-bottom: 8px;
+}
+.bar-col {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 8px;
+}
+.bar-value {
+  font-size: 26px; font-weight: 800; letter-spacing: -.02em;
+}
+.bar-wrap {
+  width: 100%; display: flex; align-items: flex-end;
+  height: 140px;
+}
+.bar {
+  width: 100%; border-radius: 8px 8px 0 0;
+  transition: height .3s;
+}
+.bar-name {
+  font-size: 11px; font-weight: 600; color: #9CA3AF;
+  text-transform: uppercase; letter-spacing: .05em;
+}
+
+/* channel colors */
+.meta .bar-value { color: #2563EB; }
+.meta .bar { background: #2563EB; }
+.asa .bar-value { color: #F59E0B; }
+.asa .bar { background: #F59E0B; }
+
+/* difference badge */
+.diff {
+  position: absolute; top: 24px; right: 20px;
+  font-size: 11px; font-weight: 700;
+  padding: 3px 8px; border-radius: 20px;
+}
+.diff-up { background: #FEF3C7; color: #92400E; }
+.diff-down { background: #D1FAE5; color: #065F46; }
+.diff-neutral { background: #EFF6FF; color: #1D4ED8; }
+
+/* insight */
+.insight {
+  margin-top: 14px; font-size: 12px; color: #6B7280; line-height: 1.4;
+  border-top: 1px solid #E5E7EB; padding-top: 12px;
+}
+.insight strong { color: #111827; }
+
+/* FOOTER */
+.footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 24px;
+  font-size: 10px; color: #D1D5DB; font-weight: 400;
+}
+.legend {
+  display: flex; gap: 20px; align-items: center;
+}
+.legend-item {
+  display: flex; gap: 6px; align-items: center;
+  font-size: 12px; color: #6B7280; font-weight: 500;
+}
+.dot { width: 10px; height: 10px; border-radius: 3px; }
+.dot-blue { background: #2563EB; }
+.dot-orange { background: #F59E0B; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header">
+    <div class="slide-num">Экономика каналов · 8 июн — 7 июл 2026</div>
+    <div class="title">Meta vs ASA: по цене signup — сопоставимо</div>
+    <div class="subtitle">Механики разные: ASA берёт дешёвой установкой, Meta — высокой конверсией</div>
+  </div>
+
+  <div class="cards">
+
+    <!-- CPI -->
+    <div class="card">
+      <div class="diff diff-up">ASA в 2.4× дешевле</div>
+      <div class="card-label">Cost per Install (CPI)</div>
+      <div class="bar-pair">
+        <div class="bar-col meta">
+          <div class="bar-value">$29</div>
+          <div class="bar-wrap"><div class="bar" style="height:100%"></div></div>
+          <div class="bar-name">Meta</div>
+        </div>
+        <div class="bar-col asa">
+          <div class="bar-value">$12</div>
+          <div class="bar-wrap"><div class="bar" style="height:41%"></div></div>
+          <div class="bar-name">ASA</div>
+        </div>
+      </div>
+      <div class="insight">ASA платит Apple за загрузку (<strong>CPD</strong>), Meta — за клики с реатрибуцией</div>
+    </div>
+
+    <!-- CR -->
+    <div class="card">
+      <div class="diff diff-up">Meta в 2.2× выше</div>
+      <div class="card-label">Signup Conversion Rate</div>
+      <div class="bar-pair">
+        <div class="bar-col meta">
+          <div class="bar-value">70%</div>
+          <div class="bar-wrap"><div class="bar" style="height:100%"></div></div>
+          <div class="bar-name">Meta</div>
+        </div>
+        <div class="bar-col asa">
+          <div class="bar-value">~32%</div>
+          <div class="bar-wrap"><div class="bar" style="height:46%"></div></div>
+          <div class="bar-name">ASA</div>
+        </div>
+      </div>
+      <div class="insight">Meta CR стабильна 4 недели подряд. ASA CR — <strong>оценка</strong>, атрибуция не настроена</div>
+    </div>
+
+    <!-- Cost per Signup -->
+    <div class="card">
+      <div class="diff diff-neutral">Сопоставимо</div>
+      <div class="card-label">Cost per Signup</div>
+      <div class="bar-pair">
+        <div class="bar-col meta">
+          <div class="bar-value">$41</div>
+          <div class="bar-wrap"><div class="bar" style="height:100%"></div></div>
+          <div class="bar-name">Meta</div>
+        </div>
+        <div class="bar-col asa">
+          <div class="bar-value">~$38</div>
+          <div class="bar-wrap"><div class="bar" style="height:93%"></div></div>
+          <div class="bar-name">ASA</div>
+        </div>
+      </div>
+      <div class="insight">Конечная цена привлечения почти одинакова — каналы взаимозаменяемы по CPS</div>
+    </div>
+
+    <!-- Installs volume -->
+    <div class="card">
+      <div class="diff diff-up">ASA растёт</div>
+      <div class="card-label">Установки за период</div>
+      <div class="bar-pair">
+        <div class="bar-col meta">
+          <div class="bar-value">407</div>
+          <div class="bar-wrap"><div class="bar" style="height:100%"></div></div>
+          <div class="bar-name">Meta</div>
+        </div>
+        <div class="bar-col asa">
+          <div class="bar-value">310</div>
+          <div class="bar-wrap"><div class="bar" style="height:76%"></div></div>
+          <div class="bar-name">ASA</div>
+        </div>
+      </div>
+      <div class="insight">Meta включает <strong>171 неатрибутированных</strong> (ATT privacy). Реальная доля выше</div>
+    </div>
+
+  </div><!-- /cards -->
+
+  <div class="footer">
+    <div class="legend">
+      <div class="legend-item"><div class="dot dot-blue"></div>Meta Ads (self-managed)</div>
+      <div class="legend-item"><div class="dot dot-orange"></div>Apple Search Ads (agency)</div>
+    </div>
+    <div>MyTruv iOS · ASA/Meta audit · 8 июля 2026</div>
+  </div>
+</div>
+</body>
+</html>
