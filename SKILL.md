@@ -1,6 +1,6 @@
 ---
 name: infographic
-description: Generate beautiful infographic slides as PNG from any text or data. Use whenever the user needs a visual slide, chart, or infographic — channel comparisons, KPI dashboards, trend lines, executive summaries, timelines, text-heavy slides. Output: 1400×800px PNG saved to ~/Desktop/<name>-<date>/. Stack: Claude writes HTML/CSS/Chart.js → Playwright screenshots → PNG. Completely free, no external API. Triggers on "сделай инфографику", "нарисуй слайд", "визуализируй", "make infographic", "build slides", "generate charts", "собери визуалы", "сделай слайд из этого".
+description: Generate beautiful infographic slides as PNG from any text or data. Use whenever the user needs a visual slide, chart, or infographic - channel comparisons, KPI dashboards, trend lines, executive summaries, timelines, text-heavy slides. Output - 1400×800px PNG saved to ~/Desktop/<name>-<date>/. Stack - Claude writes HTML/CSS/Chart.js → Playwright screenshots → PNG. Completely free, no external API. Triggers on "сделай инфографику", "нарисуй слайд", "визуализируй", "make infographic", "build slides", "generate charts", "собери визуалы", "сделай слайд из этого".
 ---
 
 # Infographic Skill
@@ -301,8 +301,8 @@ new Chart(document.getElementById('donut'), {
 <div class="body" style="flex-direction:column;gap:14px;">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;">
     <!-- color = red/green/orange/blue/#374151 -->
-    <div style="border-left:4px solid #EF4444;padding:18px 20px;background:#F9FAFB;border-radius:0 12px 12px 0;">
-      <div style="font-size:13px;font-weight:700;margin-bottom:4px;">Finding title</div>
+    <div style="border:1px solid #E5E7EB;padding:18px 20px;background:#F9FAFB;border-radius:12px;">
+      <div style="font-size:13px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:#EF4444;flex:none;"></span>Finding title</div>
       <div style="font-size:12px;color:#6B7280;line-height:1.5;">Detail. <strong>Key number</strong> in bold.</div>
     </div>
     <!-- repeat -->
